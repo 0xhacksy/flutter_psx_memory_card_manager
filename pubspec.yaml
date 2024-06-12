@@ -28,6 +28,11 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  flutter_bloc: ^8.1.6
+  equatable: ^2.0.5
+  file_picker: ^8.0.4
+  unorm_dart: ^0.3.0
+  charset: ^2.0.1
   flutter:
     sdk: flutter
 
@@ -37,6 +42,7 @@ dependencies:
   cupertino_icons: ^1.0.6
 
 dev_dependencies:
+  
   flutter_test:
     sdk: flutter
 
@@ -46,6 +52,7 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^3.0.0
+  test: ^1.25.2
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -57,7 +64,8 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
-
+  assets:
+    - assets/SLUS-00453-1.mcd
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg
