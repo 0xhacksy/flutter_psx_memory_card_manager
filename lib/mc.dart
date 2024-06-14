@@ -20,19 +20,19 @@ class MC {
       final headerStart = 128 + (slotNumber * 128);
       final headerEnd = headerStart + 128;
       final headerData = contents.getRange(headerStart, headerEnd).toList();
-      final productCode =
-          headerData.getRange(0x0C, 0x1E).toList().clearZeroes();
+
       final regionBytes = headerData.getRange(0x0A, 0xC).toList().clearZeroes();
 
       final saveDataStart = 8192 + (slotNumber * 8192);
       final saveDataEnd = saveDataStart + 8192;
       final saveData = contents.getRange(saveDataStart, saveDataEnd).toList();
-      final frameCount = saveData[2];
 
       if (regionBytes.isNotEmpty) {
         final region = regionBytes[1] << 8 | regionBytes[0];
         final name = saveData.getRange(0x4, 0x44).toList().clearZeroes();
-
+        final frameCount = saveData[2];
+        final identifier = headerData.getRange(22, 30).toList().clearZeroes();
+        final productCode = headerData.getRange(12, 22).toList().clearZeroes();
         slots.add(
           Slot(
             code: String.fromCharCodes(productCode),
@@ -41,7 +41,7 @@ class MC {
             frameCount: getFrameCount(frameCount),
             region: region.getRegion(),
             name: parseName(name),
-            identifier: '',
+            identifier: String.fromCharCodes(identifier),
           ),
         );
       }
